@@ -6,6 +6,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _cursos = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,12 +15,21 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           //Aceita inumeros filhos
           children: <Widget>[
-            Text('Hello Word Flutter', 
+            Text('Cursos', 
                   textAlign: TextAlign.center, 
-                  style: TextStyle(color: Colors.blueAccent, decoration: TextDecoration.none),),
-            Text('Animado com esse fera', 
+                  style: Theme.of(context).textTheme.display4,),
+            Text('Você completou $_cursos', 
                   textAlign: TextAlign.left, 
-                  style: TextStyle(color: Colors.greenAccent, fontSize: 30, decoration: TextDecoration.none))
+                  style: Theme.of(context).textTheme.display1.copyWith(fontWeight:  FontWeight.w300),),
+                  Padding(
+                    padding: EdgeInsets.all(30),
+                    child: FloatingActionButton(onPressed: (){
+                      setState(() {
+                        _cursos++;
+                      });
+                    },
+                    child: Icon(Icons.add),),
+                  )
           ],
         );
   }
