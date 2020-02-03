@@ -26,15 +26,19 @@ class _HomeAppState extends State<HomeApp> {
   Widget build(BuildContext context) {
     return new Container(
       //Container pai
-      color: Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(255, 0, 0, 0),
       //child : Aceita somente 1 item filho      
       child: Column(
         //Alinhamento centralizado na altura
         mainAxisAlignment: MainAxisAlignment.center,
         //Aceita inumeros filhos
         children: <Widget>[
-          Text('Olá mundo', textAlign: TextAlign.center,),
-          Text('Novo teste 2', textAlign: TextAlign.left)
+          Text('Ola mundo teste', 
+                textAlign: TextAlign.center, 
+                style: TextStyle(color: Colors.blueAccent, decoration: TextDecoration.none),),
+          Text('Novo teste 2', 
+                textAlign: TextAlign.left, 
+                style: TextStyle(color: Colors.greenAccent, fontSize: 30, decoration: TextDecoration.none))
         ],
       ),
     );
