@@ -13,8 +13,8 @@ void main(){
         mainAxisAlignment: MainAxisAlignment.center,
         //Aceita inumeros filhos
         children: <Widget>[
-          Text('Olá mundo'),
-          Text('Novo teste')
+          Text('Olá mundo', textAlign: TextAlign.center,),
+          Text('Novo teste 2', textAlign: TextAlign.left)
         ],
       ),
     )
