@@ -10,7 +10,7 @@ class Template extends StatefulWidget {
 class _TemplateState extends State<Template> {
    var homePage = new HomePage();
    var schoolPage = new SchoolPage();
-   var _selectedPage = 1;
+   var _selectedPage = 0;
 
   var _pages;
 
@@ -31,7 +31,15 @@ class _TemplateState extends State<Template> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School'))
-        ], fixedColor: Colors.lightGreenAccent,),
+        ], fixedColor: Colors.lightGreenAccent,
+        currentIndex: _selectedPage,
+        onTap: (int index ){
+          setState(() {
+            _selectedPage = index;
+          });
+        },
+        ),
+        
      );
   }
 
