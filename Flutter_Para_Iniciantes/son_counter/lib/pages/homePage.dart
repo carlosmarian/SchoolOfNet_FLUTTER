@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           //Aceita inumeros filhos
           children: <Widget>[
+            Image.asset('images/1.png', height: 100.0,),
             Text('Cursos', 
                   textAlign: TextAlign.center, 
                   style: Theme.of(context).textTheme.display4,),
