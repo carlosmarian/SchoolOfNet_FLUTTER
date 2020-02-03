@@ -24,23 +24,35 @@ class HomeApp extends StatefulWidget {
 class _HomeAppState extends State<HomeApp> {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      //Container pai
-      color: Color.fromARGB(255, 0, 0, 0),
-      //child : Aceita somente 1 item filho      
-      child: Column(
-        //Alinhamento centralizado na altura
-        mainAxisAlignment: MainAxisAlignment.center,
-        //Aceita inumeros filhos
-        children: <Widget>[
-          Text('Ola mundo teste', 
-                textAlign: TextAlign.center, 
-                style: TextStyle(color: Colors.blueAccent, decoration: TextDecoration.none),),
-          Text('Novo teste 2', 
-                textAlign: TextAlign.left, 
-                style: TextStyle(color: Colors.greenAccent, fontSize: 30, decoration: TextDecoration.none))
-        ],
+    return Scaffold( 
+      appBar: AppBar(
+        title: Text('School of NET'),
+        backgroundColor: Colors.lightGreenAccent,
+        ),
+      body: Container(
+        //Container pai
+        //Ocupar todo o conteudo do BODY
+        constraints: BoxConstraints.expand(),
+        //child : Aceita somente 1 item filho      
+        child: Column(
+          //Alinhamento centralizado na altura
+          mainAxisAlignment: MainAxisAlignment.center,
+          //Aceita inumeros filhos
+          children: <Widget>[
+            Text('Hello Word Flutter', 
+                  textAlign: TextAlign.center, 
+                  style: TextStyle(color: Colors.blueAccent, decoration: TextDecoration.none),),
+            Text('Animado com esse fera', 
+                  textAlign: TextAlign.left, 
+                  style: TextStyle(color: Colors.greenAccent, fontSize: 30, decoration: TextDecoration.none))
+          ],
+        ),
       ),
-    );
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.arrow_back), title: Text('Voltar'))
+        ], fixedColor: Colors.lightGreenAccent,),
+     );
   }
 }
