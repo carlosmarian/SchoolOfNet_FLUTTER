@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             Text('Cursos', 
                   textAlign: TextAlign.center, 
                   style: Theme.of(context).textTheme.display4,),
-            Text('Você completou $_cursos', 
+            Text('Voce completou $_cursos', 
                   textAlign: TextAlign.left, 
                   style: Theme.of(context).textTheme.display1.copyWith(fontWeight:  FontWeight.w300),),
                   Padding(
