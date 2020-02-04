@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './articles_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,18 +11,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Feeds'),
-        //Indica para a appBar que n„o deve ter o bot„o de voltar.
+        //Indica para a appBar que n√£o deve ter o bot√£o de voltar.
         automaticallyImplyLeading: false,
       ),
       body: Center(
         child : RaisedButton(
-          child: Text('AvanÁar'),
+          child: Text('Avan√ßar'),
           onPressed: (){
-            print('Vai a segunda p·gina');
-            //Adiciona um item na pilha de navegaÁ„o.
-            Navigator.push(
-              context, 
-              MaterialPageRoute(builder: (context) => ArticlePage())
+            print('Vai a segunda p√°gina');
+            //Navega para o rota nomeada.
+            Navigator.pushNamed(context, 
+              '/article'
             );
           },
         )

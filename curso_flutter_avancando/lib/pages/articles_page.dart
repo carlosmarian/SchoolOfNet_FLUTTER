@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './page3_page.dart';
 
 class ArticlePage extends StatefulWidget {
   @override
@@ -17,12 +16,10 @@ class _ArticlePageState extends State<ArticlePage> {
         child: RaisedButton(
           onPressed: (){
             print('Avança novamente');
-            Navigator.push(
+            //Navega para a rota nomeada
+            Navigator.pushNamed(
               context, 
-              MaterialPageRoute(
-                builder: (context) => Page3Page()
-              )
-            );
+              '/page3');
           }, 
           child: Text('Avaçar')
         )
