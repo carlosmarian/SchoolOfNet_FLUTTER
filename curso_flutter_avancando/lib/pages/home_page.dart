@@ -1,7 +1,7 @@
-import 'package:curso_flutter_avancando/pages/articles_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './articles_page.dart';
+import '../data/save_local.dart';
 
 class HomePage extends StatefulWidget {
   
@@ -15,12 +15,21 @@ class _HomePageState extends State<HomePage> {
   final feedController = TextEditingController();
 
   //Declara a lista que será carregada no ListView
-  List feeds = [
-    "https://blog.schoolofnet.com/feeds",
-  ];
+  //"https://blog.schoolofnet.com/feeds",
+  List feeds = [];
 
   @override
   Widget build(BuildContext context) {
+
+    SaveLocal persistencia = new SaveLocal(feedList: feeds);
+
+    //Carregar a lista
+    setState(() {
+      persistencia.read().then( (data) {
+        feeds = data;
+      });      
+    });
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('My Feeds'),
@@ -81,6 +90,9 @@ class _HomePageState extends State<HomePage> {
                           //Atribuindo o valor do campo texto na lista, sempre usar o setState
                           setState(() {                            
                             feeds.add(feedController.text);
+                            //Persisitir a lista
+                            persistencia.save(feeds);
+
                             feedController.text = '';
                           });
                         }

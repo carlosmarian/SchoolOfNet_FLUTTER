@@ -10,13 +10,14 @@ class SaveLocal{
   SaveLocal({this.feedList});
 
   Future<File> get fileFeed async {
-    //OBS: getApplicationDocumentsDirectory é assincrono    
+    //OBS: getApplicationDocumentsDirectory é assincrono, por isso usamos await
     Directory dir = await getApplicationDocumentsDirectory();
 
     File file = File(dir.path + '/feeds.json');
 
     if(!file.existsSync()){
-      save(fileFeed);
+      //Salva aguardando
+      await save(fileFeed);
     }
     return file;
   }
