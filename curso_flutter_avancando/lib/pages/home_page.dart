@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
+  //Define um controle para ter acesso aos dados do campo de texto.
+  final feedController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +30,32 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     TextFormField(
                       keyboardType: TextInputType.url,
+                      //Relaciona o controle ao componente que queremos gerenciar.
+                      controller: feedController,
                       decoration: InputDecoration(
-                        labelText: 'Link do RSS'),
+                        labelText: 'Link do RSS'
+                      ),
+                      validator: (value) {
+                        //Efetua a valiação, retorna vazio caso esta ok ou a msg do erro.
+                        if(value.isEmpty){
+                          return "Este campo não pode ficar em branco";
+                        }
+                      },
                     ),
                     RaisedButton(
                       child: Text('Cadastrar'),
                       color: Colors.blue,
                       textColor: Colors.white,
                       onPressed: (){
-                        print('Adicionou');
-                      },)
-                  ],)
+                        //Para aplicar a validação dos campos, é necessário solicitar um validate ao status do form
+                        if(_formKey.currentState.validate()){
+                          print(feedController.text);
+                          feedController.text = '';
+                        }
+                      },
+                    )
+                  ],
+                )
               ),
         )
     );
