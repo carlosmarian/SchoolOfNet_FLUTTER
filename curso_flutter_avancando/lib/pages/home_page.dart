@@ -14,6 +14,11 @@ class _HomePageState extends State<HomePage> {
   //Define um controle para ter acesso aos dados do campo de texto.
   final feedController = TextEditingController();
 
+  //Declara a lista que será carregada no ListView
+  List feeds = [
+    "https://blog.schoolofnet.com/feeds",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +33,35 @@ class _HomePageState extends State<HomePage> {
                 key : _formKey,
                 child: Column(
                   children: <Widget>[
+                    //Para add uma lista é necessário usar o Expanded, ele posiciona a lista
+                    Expanded(
+                      child: ListView.builder(
+                        //Atribui o tamanho da lisat baseado na lista
+                        itemCount : feeds.length,
+                        itemBuilder : (
+                          context, 
+                          index){
+                            return ListTile(
+                              //Coloca no titulo o conteudo do indice
+                              title: Text(feeds[index]),
+                              //Add um icone
+                              leading: Icon(Icons.rss_feed),
+                              //Adicionando a ação de click
+                              onTap: (){
+                                //Aki será add a ação do click  
+                                print(index.toString());
+                              },
+                            );
+                          }
+                      ),
+                    ),
                     TextFormField(
                       keyboardType: TextInputType.url,
                       //Relaciona o controle ao componente que queremos gerenciar.
                       controller: feedController,
                       decoration: InputDecoration(
-                        labelText: 'Link do RSS'
+                        labelText: 'Link do RSS',
+                        hintText: 'url'
                       ),
                       validator: (value) {
                         //Efetua a valiação, retorna vazio caso esta ok ou a msg do erro.
@@ -50,7 +78,11 @@ class _HomePageState extends State<HomePage> {
                         //Para aplicar a validação dos campos, é necessário solicitar um validate ao status do form
                         if(_formKey.currentState.validate()){
                           print(feedController.text);
-                          feedController.text = '';
+                          //Atribuindo o valor do campo texto na lista, sempre usar o setState
+                          setState(() {                            
+                            feeds.add(feedController.text);
+                            feedController.text = '';
+                          });
                         }
                       },
                     )
