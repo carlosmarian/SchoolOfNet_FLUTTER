@@ -16,6 +16,7 @@ class SaveLocal{
     File file = File(dir.path + '/feeds.json');
 
     if(!file.existsSync()){
+      file.createSync();
       //Salva aguardando
       await save(fileFeed);
     }
@@ -30,6 +31,9 @@ class SaveLocal{
     String data = file.readAsStringSync();
 
     //Converte para json o conteudo do arquivo
+    if(data == ""){
+      return [];
+    }
     return json.decode(data);
   }
 
@@ -37,6 +41,6 @@ class SaveLocal{
     //Acessar o arquivo de persistencia
     final File file = await fileFeed;
 
-    file.writeAsString( json.encode(data) );
+    file.writeAsStringSync( json.encode(data) );
   }
 }

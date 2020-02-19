@@ -20,11 +20,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    //Instanciar a classe de persistência
     SaveLocal persistencia = new SaveLocal(feedList: feeds);
 
-    //Carregar a lista
+    //Carregar a lista, sempre usar setState
     setState(() {
+      //carrega em paralelo
       persistencia.read().then( (data) {
         feeds = data;
       });      
@@ -59,6 +60,12 @@ class _HomePageState extends State<HomePage> {
                               onTap: (){
                                 //Aki será add a ação do click  
                                 print(index.toString());
+                                Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => ArticlePage(
+                                        feed: feeds[index],
+                                      )
+                                    )
+                                  );
                               },
                             );
                           }
