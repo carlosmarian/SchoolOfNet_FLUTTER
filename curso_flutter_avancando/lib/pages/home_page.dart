@@ -23,13 +23,14 @@ class _HomePageState extends State<HomePage> {
     //Instanciar a classe de persistência
     SaveLocal persistencia = new SaveLocal(feedList: feeds);
 
-    //Carregar a lista, sempre usar setState
-    setState(() {
+    
       //carrega em paralelo
       persistencia.read().then( (data) {
-        feeds = data;
+        //Carregar a lista, sempre usar setState
+        setState(() {
+          feeds = data;
+        });
       });      
-    });
     
     return Scaffold(
       appBar: AppBar(
@@ -84,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                         if(value.isEmpty){
                           return "Este campo não pode ficar em branco";
                         }
+                        return "";
                       },
                     ),
                     RaisedButton(
