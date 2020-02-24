@@ -19,3 +19,6 @@ Para instalar deve add "path_provider: ^1.6.0" no arquivo "pubspec.yaml" e salva
 Usar o pugin "http: ^0.12.0+4" para requisição http
 
 Usar o pugin "xml: ^3.7.0" para ler XML
+
+Usar o plugin url_launcher: ^5.4.2 para acessar url
+

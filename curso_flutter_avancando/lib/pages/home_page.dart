@@ -85,7 +85,6 @@ class _HomePageState extends State<HomePage> {
                         if(value.isEmpty){
                           return "Este campo não pode ficar em branco";
                         }
-                        return "";
                       },
                     ),
                     RaisedButton(
